@@ -323,10 +323,17 @@
         <?php } ?>
       <?php } else{ ?>
         <?php foreach ($json_site as $object) { ?>
+	  var icon = {
+		url: "image/bike.gif",
+		scaledSize: new google.maps.Size(30, 30),
+		origin: new google.maps.Point(0, 0),
+		archor: new google.maps.Point(0, 0)
+	  };
           map.addMarker({
             lat: <?php echo floatval($object['Latitude']) ?>,
             lng: <?php echo floatval($object['Longitude']) ?>,
-            suppressInfoWindows: true,
+            icon: icon,
+	    suppressInfoWindows: true,
             infoWindow: {
               content: <?php echo '"<p>' . $object['Riverside_Park'] . ':' . $object['Scenic_Spot'] . '</p>' . '</br>' . $object['Description'] . '"'; ?>
             },
@@ -558,7 +565,7 @@
     <h3>Routes</h3>
     <a href="/?mode" class="btn btn-success">景點模式</a>&nbsp;&nbsp;&nbsp;<a href="/?traffic" class="btn btn-success">觀看車流量</a>
     <div class="row">
-      <div class="span13">
+      <div class="span11">
         <div class="popin">
           <div id="map"></div>
           <div style="display: none;" id="pano"></div>
